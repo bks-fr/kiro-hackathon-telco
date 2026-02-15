@@ -1,0 +1,19 @@
+{
+  "enabled": true,
+  "name": "Update Changelog & Commit",
+  "description": "Prompts to update CHANGELOG.md after important file changes, then commits all changes to git with a descriptive message",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "src/*.py",
+      "mock_data.py",
+      "requirements.txt",
+      "docs/*.md"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "An important file was just edited. Please:\n1. Review the changes made\n2. Update CHANGELOG.md in the [Unreleased] section with appropriate entries under Added/Changed/Fixed\n3. Stage all changes with `git add .`\n4. Commit with a descriptive message that summarizes the changes\n5. Confirm the commit was successful"
+  }
+}
